@@ -1,0 +1,374 @@
+
+body.dark {
+	background: #292C35;
+}
+/* BOTONES */
+
+.button1 {
+    cursor: pointer;
+    padding: 1em;
+    color: white;
+    border: 1px solid #2b2b2b;
+    background-color: #2b2b2b;
+}
+body.dark .button1 {
+    border: 1px solid gray;
+    background-color: grey;
+}
+.button2 {
+    cursor: pointer;
+    padding: 1em;
+    color: #2b2b2b;
+    border: 1px solid #2b2b2b;
+    background-color: white;
+}
+/* Switche them */
+.checkbox {
+	opacity: 0;
+	position: absolute;
+}
+
+.label {
+	background-color: rgb(0, 153, 255);
+	border-radius: 50px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5px;
+	position: relative;
+	height: 26px;
+	width: 50px;
+	transform: scale(1.5);
+}
+.label.active {
+    background: #2b2b2b;
+}
+
+.label .ball {
+	background-color: #fff;
+	border-radius: 50%;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	height: 22px;
+	width: 22px;
+	transform: translateX(0px);
+	transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .label .ball {
+	transform: translateX(24px);
+}
+.toggleSwitchContainer {
+    margin-left: 2em;
+    position: relative;
+}
+.toggleSwitch {
+    width: 60px;
+    height: 30px;
+    background: gray;
+    border-radius: 30px;
+    padding: 4px;
+}
+.toggleSwitch.active {
+    background: rgb(0, 153, 255);
+}
+.toggleSwitch.active > .innerCircle {
+    margin-left: 29px;
+}
+.innerCircle {
+    width: 23px;
+    height: 23px;
+    background: white;
+    border-radius: 50%;
+}
+
+
+/* HEADER */
+header{
+    width: 100%;
+    color: white;
+    background-color: #2b2b2b;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+body.dark header {
+    color: #2b2b2b;
+    background-color: grey;
+}
+.headerContainer{
+    width: 100%;
+    max-width: 1366px;
+    height: 5em;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.iconsContainer,
+.logoContainer{
+    display: flex;
+    align-items: center;
+}
+.iconShopping,
+.iconProfile{
+    position: relative;
+    padding-left: 2em;
+}
+.shoppingCount {
+    display: inline-block;
+    text-align: center;
+    width: 1.5em;
+    height: 1.5em;
+    font-weight: 600;
+    padding: 0.25em;
+    border-radius: 50%;
+    color: #2b2b2b;
+    background-color: white;
+}
+.carrito-icon:hover {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.486));
+}
+.profile-icon:hover {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.486));
+}
+#btn-profile,
+#btn-menu,
+#chk {
+    display: none;
+}
+.shoppingGrid,
+.profile-container {
+    display: none;
+}
+.profile-container a {
+    padding: 0.5em 0 0.5em 0;
+    text-decoration: none;
+}
+#btn-menu:checked ~ .shoppingGrid {
+    width: 300px;
+    display: block;
+    position: absolute;
+    padding: 1em;
+    color: #2b2b2b;
+    background-color: white;
+    box-shadow:  8px 8px 8px -3px #2b2b2b;
+    top: 45px;
+    right: 0px;
+}
+#btn-profile:checked ~ .profile-container {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    padding: 1em;
+    color: #2b2b2b;
+    background-color: white;
+    box-shadow:  8px 8px 8px -3px #2b2b2b;
+    top: 45px;
+    right: 0px;
+}
+.shoppingGrid h2 {
+    margin: 0.5em 0;
+}
+.shoppingGrid p {
+    margin: 1em 0;
+}
+.shoppingGrid ul {
+    margin: 0.5em 0;
+}
+.conatinerButton {
+    display: flex;
+    justify-content: right;
+    margin: 0.5em 0;
+}
+
+.listItemsShop {
+    list-style: none;
+    height: auto;
+    margin: 0.25em;
+    padding: 0.25em;
+    border: 1px solid grey;
+}
+
+
+.headerNav a {
+    text-decoration: none;
+    color: hsl(0, 0%, 100%, 0.5);
+    padding-left: 2em;
+}
+.carrito-productos{
+    display: flex;
+    margin-top: 1em;
+}
+.carrito-info-productos {
+    padding: 0 0.5em 0 0.5em;
+}
+.listGroup li {
+    list-style: none;
+}
+.totalContainer {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+#total-pagar {
+    margin-left: 0.8em;
+}
+/* MAIN SECTION */
+
+.mainContainer {
+    width: 100%;
+    max-width: 1366px;
+    margin: 0 auto;
+    position: relative;
+}
+    .mainContainer img {
+        width: 100%;
+        height: auto;
+    }
+    .mainInfo {
+        position: absolute;
+        width: 500px;
+        height: auto;
+        top: 250px;
+        font-size: 2em;
+        padding: 0.5em;
+        background:hsl(0, 0%, 100%, 0.5);
+    }
+        .mainInfo h2 {
+            font-weight: 900;
+        }
+/* ARTICLE sECTION + formulario */
+
+.containerDescraga {
+    width: 100%;
+    color: white;
+    background: url("../assets/img/fondoService1140x288.png") no-repeat fixed center;
+    background-size: cover;
+}
+    .descargaInfo,
+    .formulario-registro {
+        width: 100%;
+        height: auto;
+        max-width: 1366px;
+        margin: 2em auto;
+        padding: 2em 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+    }
+    .formulario-usuario {
+        width: 50%;
+        height: auto;
+        margin: 1em;
+        display: flex;
+        flex-direction: column;
+    }
+    .formulario-usuario input {
+        height: 2.5em;
+        margin: 1em 0;
+        padding: 1em;
+    }
+    #mensajeConfirma {
+        display: none;
+        position: absolute;
+        bottom: -2em;
+        user-select: none;
+        background: #000;
+
+        transition: bottom .4s ease;
+    }
+        #mensajeConfirma.show {
+            display: inline;
+            bottom: 2em;
+        }
+
+/* SECTION */
+section{
+    width: 100%;
+    height: auto;
+    max-width: 1366px;
+    margin: 0 auto;
+}
+.titleService{
+    width: 100%;
+    font-weight: 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+.mainInformation img {
+    width: 100%;
+}
+
+.containerService{
+    width: 100%;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+}
+.articleContainer{
+    width: 45%;
+    height: auto;
+    margin: 1em;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+}
+.articleContainer div{
+    width: 50%;
+    margin: 0 0.5em 0 0.8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* FOOTER SECTION */
+
+footer {
+    width: 100%;
+    height: 300px;
+    margin-top: 1em;
+    padding: 1em;
+    color: white;
+    background-color: #2b2b2b;
+}
+body.dark footer {
+    color: #2b2b2b;
+    background-color: grey;
+}
+.footerContainer {
+    width: 100%;
+    height: 100%;
+    max-width: 1366px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footerInfo{
+    width: 33.3%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+}
+.iconsRss {
+    width: 30px;
+    height: 30px;
+    margin: 0.5em;
+}
+
+/* COPYRIGHT */
+.copyRight {
+    width: 100%;
+    padding: 1em;
+    max-width: 1366px;
+    margin: 0 auto;
+    text-align: center;
+}

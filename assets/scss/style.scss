@@ -1,0 +1,35 @@
+@import "base/colors.scss";
+@import "buttons/buttons.scss";
+
+@import "containers/header.scss";
+@import "containers/main.scss";
+@import "containers/form.scss";
+@import "containers/services.scss";
+@import "containers/download.scss";
+@import "containers/footer.scss";
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    background-color: $color-olive;
+}
+.container {
+    width: 100%;
+    /*max-width: 1366px;*/
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(autofit, min-max(12, 1fr));
+    grid-template-rows: auto;
+    grid-column-gap: 1.5em;
+    grid-row-gap: 0px;
+}
+
