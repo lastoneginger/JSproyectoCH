@@ -17,6 +17,13 @@ let servicios = [
         unidades: 0,
     },
     {
+        name: 'Sitio Web',
+        priceUnit: 250990,
+        description: 'Descripcion del servicio',
+        img: './assets/img/products/web.png',
+        unidades: 0,
+    },
+    {
         name: 'Menú de Servicios',
         priceUnit: 5960,
         description: 'Descripcion del servicio',

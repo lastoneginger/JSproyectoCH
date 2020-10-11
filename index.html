@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Google Font Poppins-->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,900;1,200&display=swap" rel="stylesheet">
     <!--JQUERY -->
@@ -30,12 +30,11 @@
             </div>
             <div class="header__icons">
                 <div class="header__shopping">
-                    <input type="checkbox" id="btn-menu">
-                    <label for="btn-menu" class="header__shoppingIcon lbl-menu">
+                    <a href="views/carrito.html" for="btn-menu" class="header__shoppingIcon lbl-menu">
                         <img class="carrito-icon" src="assets/img/supermarket.svg" alt="" width="30" height="30">
                         <span id="cantidad-articulos" class="header__shoppingCount">0</span>
-                    </label>
-                    <div id="carrito-contenedor" class="header__shoppingCart">
+                    </a>
+                    <!--<div id="carrito-contenedor" class="header__shoppingCart">
                         <h2>Dentro del Carrito:</h2>
                         <ul id="carrito-lista" class="listGroup"></ul>
                         <div class="totalContainer">
@@ -45,7 +44,7 @@
                         <div class="conatinerButton">
                             <button id="boton-pagar" class="button1">Pagar</button>
                         </div>
-                    </div>
+                    </div>-->
                 </div>                         
                 <div class="header__profile">
                     <input type="checkbox" id="btn-profile">
@@ -80,6 +79,20 @@
         </div>
     </main>
 
+    <section class="service__container">
+        <div class="service__title">
+            <h2>Servicios Destacados</h2>
+        </div>
+        <div id="servicesList" class="containerService ">
+         <!--Servicios Agregados por JS desde Data.js-->   
+        </div>
+        <div class="button-div">
+            <button class="button2 magnifyBorder" type="button" value="Descargar">Servicios</button>
+            <button class="button2 magnifyBorder" type="button" value="Descargar">Ir al carrito</button>
+            <button class="button2 magnifyBorder" type="button" value="Descargar">Contactar</button>
+        </div>
+    </section>
+
     <article class="form">
         <div class="form__container">
             <!--Formulario con Jquery en archivo form.js-->
@@ -104,22 +117,13 @@
             </div>
         </div>
     </article>
-
-    <section class="service__container">
-        <div class="service__title">
-            <h2>Servicios Destacados</h2>
-        </div>
-        <div id="servicesList" class="containerService ">
-         <!--Servicios Agregados por JS desde Data.js-->   
-        </div>
-    </section>
-
-    <article class="download__container">
+    
+    <!--<article class="download__container">
         <div class="download__info">
             <h2>Descarga nuestro <br> portafolio de servicios</h2>
             <button class="button2 magnifyBorder" type="button" value="Descargar">Descargar</button>
         </div>
-    </article>
+    </article>-->
 
     <footer>
         <div class="footer__container">
@@ -158,8 +162,10 @@
     <!--JS Archivos del proyecto-->
     <!--<script src="assets/JS/data.json"></script>-->
     <script src="assets/JS/data.js"></script>
+    <script src="assets/JS/toggle.js"></script>
     <script src="assets/JS/form.js"></script>
     <script src="assets/JS/index2.js"></script>
+    <!--<script src="assets/JS/indexfinal.js"></script>-->
 </body>
     
 </html>

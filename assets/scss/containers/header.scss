@@ -30,6 +30,9 @@ header {
     color: $color-olive;
     padding-left: 2em;
 }
+.header__nav a:hover {
+    color: $color-apple;
+}
 
 /* Shopping Car & Counter */
 .header__shopping {
@@ -41,7 +44,6 @@ header {
         width: 1.5em;
         height: 1.5em;
         font-weight: 600;
-        padding: 0.25em;
         border-radius: 50%;
         color: #2b2b2b;
         background-color: white;
@@ -50,19 +52,16 @@ header {
 .header__shoppingIcon:hover {
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.486));
 }
-.header__shoppingCart {
+/*.header__shoppingCart {
     display: none;
 }
-#btn-menu:checked ~ .header__shoppingCart {
-    width: 300px;
+#btn-menu:checked ~ */ 
+.header__shoppingCart {
+    width: auto;
     display: block;
-    position: absolute;
     padding: 1em;
     color: #2b2b2b;
-    background-color: white;
-    box-shadow:  8px 8px 8px -3px #2b2b2b;
-    top: 45px;
-    right: 0px;
+    display: inline-block;
 }
 
 /* Profile Section */

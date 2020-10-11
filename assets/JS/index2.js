@@ -1,23 +1,18 @@
 // clase 8 y 9 - DOM
-
-//Toggle para cambiar de tema - Light/Dark Toggle theme
-const chk = document.getElementById('chk');
-
-chk.addEventListener('change', () => {
-    document.body.classList.toggle('dark');
-});
-
 //****Carrito de Compras******//
+
 //Variable para llamar del DOM los botones Agregar Servicio
 let botonAgregarServicio = document.querySelectorAll('.boton-agregar-servicio');
-
-//For para pasar por todos los botones y ejecutar una funcion mediante eventlistener
+    //For para pasar por todos los botones y ejecutar una funcion mediante eventlistener
 for (let i = 0; i < botonAgregarServicio.length; i++) {
     botonAgregarServicio[i].addEventListener('click', () => {
         //llamando a la funcion
         contadorCarrito(servicios[i]);
+        mirarServiciosEnLista(servicios[i]);
+        totalCost(servicios[i])
     })
 }
+
 //Funcion actualiza el contador de servicios en Carrito
 function numeroServiciosLista(){
     let numeroDeServicios = localStorage.getItem('contadorCarrito');
@@ -27,6 +22,7 @@ function numeroServiciosLista(){
     
 }
 numeroServiciosLista();
+
 //Funcion contador de servicio en Carrito
 function contadorCarrito(servicios) {
     
@@ -65,6 +61,25 @@ function mostrarServiciosEnLista(servicios){
 
 }
 
+//Funcion del valor Total
+function totalCost(servicios) {
+    //console.log ("the product price is", servicios.priceUnit);
+    let cartCost = localStorage.getItem('totalCost');
+
+    if(cartCost != null) {
+        cartCost = parseInt(cartCost);
+        localStorage.setItem('totalCost', cartCost + servicios.priceUnit);
+    } else {
+        localStorage.setItem('totalCost', servicios.priceUnit)
+    }
+}
+//Funcion para actualizar valor Total
+/*function updateCost(servicios) {
+    let cartCost = localStorage.getItem('totalCost');
+    let quantity = document.querySelectorAll('.cantidadServicios');
+
+}*/
+
 //Funcion para mostrar los servicios en lista, sacados del LocalStorage
 function mirarServiciosEnLista(){
     let mirarServicios = localStorage.getItem('serviciosEnCarrito');
@@ -75,10 +90,10 @@ function mirarServiciosEnLista(){
         Object.values(mirarServicios).map(item => {
             contenedorServicios.innerHTML += `
             <div class="carrito-productos">
-                <img src="${item.img}" width="50" height="50" alt="imagen producto">
+                <img src="../${item.img}" width="140" height="140" alt="imagen producto">
                 <div class="carrito-info-productos">
                     <h4>${item.name}</h4>
-                    <h4 class="servicio-price">${item.unidades} x $ ${item.unidades * item.priceUnit},00</h4>
+                    <h4 class="servicio-price">${item.unidades} x $ ${item.unidades * item.priceUnit},°°</h4>
                     <input class="cantidadServicios" type="number" value="1">
                 </div>
                 <div class="botonquitar">
@@ -88,27 +103,95 @@ function mirarServiciosEnLista(){
             `
         })
     }
+
+    //Variable para llamar del DOM los botones Quitar Servicio
+    let removeItem = document.querySelectorAll('.boton-quitar')
+    for (var i=0; i<removeItem.length; i++){
+        let button = removeItem[i]
+        button.addEventListener('click', removeItemCart);
+    }
+
+    let cartCost = localStorage.getItem('totalCost');
+    document.querySelector('#total-pagar').textContent = cartCost;
+
+}
+
+//Funcion removeItemCart
+function removeItemCart(event) {
+    let buttonClicked = event.target;
+    buttonClicked.closest('.carrito-productos').remove();
+    let servicioQuitar = localStorage.getItem('serviciosEnCarrito');
+    removeService = parseInt(servicioQuitar);
+    for (var i=0; i<removeService.length; i++){
+        removeService.shift();
+    }
+    localStorage.setItem('serviciosEnCarrito')
     
+    totalCost()
+    contadorCarrito()
 }
 
 mirarServiciosEnLista();
 
-//Funcion para actualizar el valor Total
-function valorTotal() {
-    let totalAPagar = 0;
 
+
+
+
+
+
+
+
+
+/*let removeItem = document.querySelectorAll('.boton-quitar')
+for (var i=0; i<removeItem.length; i++){
+    let button = removeItem[i]
+    button.addEventListener('click', function(){
+        console.log('clicked')
+    })
+}*/
+
+/*function upDateTotal(){
+    let itemContainer = document.querySelectorAll('.carrito-productos')[0];
+    let priceRow = itemContainer.querySelectorAll('carrito-info-productos')
+    for (var i=0; i<priceRow.length; i++) {
+        let priceRows = priceRow[i]
+        let priceElement = priceRows.querySelectorAll('.servicio-price')[0]
+        let quantityElement = priceRows.querySelectorAll('.cantidadServicios')[0]
+        console.log(priceElement, quantityElement)
+    }
+}*/
+
+
+/*function removeItemLocal(name) {
+    let servicios = localStorage.getItem('serviciosEnCarrito');
+    for (let i = 0; i < servicios.length; i += 1) {
+        if (servicios[i].name ===name) {
+            servicios.splice(i, 1)
+            return
+        }
+    }
+}*/
+
+
+//Actualizar Total luego de modificar
+
+
+//Remover articulo en carrito
+/*function cartRemoveFun(event) {
+    const buttonClicked = event.target;
+    buttonClicked = localStorage.removeItem('serviciosEnCarrito')
+    contadorCarrito(servicios[i]);
+    totalCost(servicios[i]);
+    mirarServiciosEnLista();
 }
 
-//llamando a la funcion
-
-
-
-
-
-
-
-
-
+let removeItem = document.querySelectorAll('.boton-quitar')
+for (var i=0; i<removeItem.length; i++){
+    let button = removeItem[i]
+    button.addEventListener('click', function(){
+        console.log('clicked')
+    })
+}*/
 
 
 
