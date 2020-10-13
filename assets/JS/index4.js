@@ -20,13 +20,6 @@ function addService() {
     }
 }
 
-function loadCartNumber() {
-    let numberItems = localStorage.getItem('cartNumber');
-    if(numberItems) {
-        document.querySelector('#cantidad-articulos').textContent = numberItems;
-    }
-}
-
 //Cantidad de servicios
 function cartNumber(servicios) {
     let numberItems = localStorage.getItem('cartNumber');
@@ -84,6 +77,14 @@ function totalCostRefres() {
         document.querySelector('#total-pagar').textContent = totalRefres;
     }
 }
+//Actualizar Items agregados
+function loadCartNumber() {
+    let numberItems = localStorage.getItem('cartNumber');
+    if(numberItems) {
+        document.querySelector('#cantidad-articulos').textContent = numberItems;
+    }
+}
+
 
 function displayItem() {
     let cartItems = localStorage.getItem('itemsInCart');
@@ -113,10 +114,11 @@ function displayItem() {
         totalContainer.textContent = `$` + cartCost + `,°°`;
         
     }
-    deleteButton();
+
+    deleteButton()
 };
 
-
+displayItem();
 
 //Funcion para borrar los articulos en el DOM y en LocalStorage
 function deleteButton(){
@@ -126,7 +128,7 @@ function deleteButton(){
     let serviceAdded = localStorage.getItem('itemsInCar');
     let cartTotal = localStorage.getItem('totalCost');
     
-    serviceAdd = JSON.parse(cartNumber);
+    serviceAdded = JSON.parse(serviceAdded);
     for (let i = 0; i < deleteButton.length; i++) {
         deleteButton[i]. addEventListener('click', () => {
             serviceName = deleteButton[i].parentElement.textContent.trim();
@@ -134,7 +136,7 @@ function deleteButton(){
             localStorage.setItem('cartTotal', cartTotal - (serviceAdded[serviceName].priceUnit * serviceAdded[serviceName].unidades));
             
             delete serviceAdded[serviceName];
-            localStorage.setItem('itemsInCar', JSON.stringify(cartNumber));
+            localStorage.setItem('itemsInCar', JSON.stringify(serviceAdded));
 
             location.reload()
         })
@@ -142,6 +144,6 @@ function deleteButton(){
 }
 
 //Llamando funcion actualizar contador
-displayItem(); 
+ 
 loadCartNumber();
 totalCostRefres();
