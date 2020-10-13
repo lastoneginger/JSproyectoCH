@@ -83,5 +83,5 @@ $(document).ready(servicios.forEach(servicioItems => {
         </div>
     `
     ;
-    listaServicios.appendChild(itemLista);
+    listaServicios.append(itemLista);
 }));

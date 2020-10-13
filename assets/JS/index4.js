@@ -4,12 +4,20 @@
 
 /*todos los botones de los servicios*/
 let addBoton = document.querySelectorAll('.boton-agregar-servicio');
+$(document).ready(function() {
+    addBoton = $('.boton-agregar-servicio')
+    addBoton.click(addService);
+})
 
-for (let i=0; i < addBoton.length; i++) {
-    addBoton[i].addEventListener('click', () => {
-        cartNumber(servicios[i]);
-        totalCost(servicios[i]);
-    })
+
+function addService() {
+    let addBtn = $('.boton-agregar-servicio');
+    for (let i=0; i < addBtn.length; i++) {
+        addBtn[i].addEventListener('click', () => {
+            cartNumber(servicios[i]);
+            totalCost(servicios[i]);
+        })
+    }
 }
 
 function loadCartNumber() {
@@ -19,6 +27,7 @@ function loadCartNumber() {
     }
 }
 
+//Cantidad de servicios
 function cartNumber(servicios) {
     let numberItems = localStorage.getItem('cartNumber');
     numberItems = parseInt(numberItems);//Cambiar de STRING a Number
@@ -68,6 +77,13 @@ function totalCost(serviciosClicked) {
         localStorage.setItem('totalCost', serviciosClicked.priceUnit);
     }
 }
+//Actualizar Total
+function totalCostRefres() {
+    let totalRefres = localStorage.getItem('totalCost');
+    if (totalRefres) {
+        document.querySelector('#total-pagar').textContent = totalRefres;
+    }
+}
 
 function displayItem() {
     let cartItems = localStorage.getItem('itemsInCart');
@@ -97,10 +113,35 @@ function displayItem() {
         totalContainer.textContent = `$` + cartCost + `,°°`;
         
     }
+    deleteButton();
+};
+
+
+
+//Funcion para borrar los articulos en el DOM y en LocalStorage
+function deleteButton(){
+    let deleteButton = document.querySelectorAll('.boton-quitar');
+    let serviceName ;
+    let serviceAmount = localStorage.getItem('cartNumber');
+    let serviceAdded = localStorage.getItem('itemsInCar');
+    let cartTotal = localStorage.getItem('totalCost');
+    
+    serviceAdd = JSON.parse(cartNumber);
+    for (let i = 0; i < deleteButton.length; i++) {
+        deleteButton[i]. addEventListener('click', () => {
+            serviceName = deleteButton[i].parentElement.textContent.trim();
+            localStorage.setItem('serviceAdded', serviceAmount - serviceAdded[serviceName].unidades);
+            localStorage.setItem('cartTotal', cartTotal - (serviceAdded[serviceName].priceUnit * serviceAdded[serviceName].unidades));
+            
+            delete serviceAdded[serviceName];
+            localStorage.setItem('itemsInCar', JSON.stringify(cartNumber));
+
+            location.reload()
+        })
+    }
 }
 
-
-
-//Llamando funcion actualizar contador 
+//Llamando funcion actualizar contador
+displayItem(); 
 loadCartNumber();
-displayItem();
+totalCostRefres();
